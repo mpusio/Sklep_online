@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sklep</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+</head>
+<body>
+  <header class="container center align">
+  <h1>Sklep internetowy</h1>
+  <p>Takie zakupy!</p>
+  </header>
+
+  <div class="container">
+  {% block content %}
+  {% endblock %}
+  <br>
+  <a style="display:block" class="center-align" href="/admin">Panel admina</a>
+  {% if user.is_authenticated %}
+    <br>
+    Witaj {{ user.username }}
+    {% if user.username == 'michal' %}
+      <br>
+      <a href="/update">Zmień cenę</a>
+    {% endif %}
+    <br>
+    <a href="/delete">Usuń zamówienie</a>
+    <p><a href="{% url 'logout' %}">Wyloguj</a></p>
+  {% else %}
+    <p>Nie jesteś zalogowany</p>
+    <a href="/login">Zaloguj się</a>
+    <br>
+    <a href="/signup">Rejestracja</a>
+  {% endif %}
+  </div>
+</body>
+</html>

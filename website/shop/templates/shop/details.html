@@ -1,0 +1,24 @@
+{% extends 'shop/layout.html' %}
+
+{% block content %}
+<h3 class="center-align blue lighten-1">{{categories.title}}</h3>
+<div class="card"></div>
+  <div class="card-content">
+      {{categories.body}}
+      <ul class="collection">
+      {% for item in products %}
+          {% if item.category_id == categories.id %}
+              <li class="collection-item">{{item.name}} {{item.price}},-</li>
+              {% if user.is_authenticated %}
+                  <a href="/insert/{{categories.id}}/{{item.id}}/{{user.id}}" class="btn">Kup Teraz {{item.name}}!</a>
+              {% endif %}
+          {% endif %}
+      {% endfor %}
+      </ul>
+  </div>
+  <div class="card action">
+      {{categories.created_at}}
+  </div>
+</div>
+<a href="/" class="btn">Wróć</a>
+{% endblock %}

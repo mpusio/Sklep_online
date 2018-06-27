@@ -1,0 +1,9 @@
+{% extends 'shop/layout.html' %}
+
+{% block content %}
+    <h3>Wybierz towar dla którego dasz promocje 10zl!</h3>
+    {% for item in product %}
+        <li class="collection-item"><a href="/inf_update/{{item.id}}">{{item.name}}</li>
+    {% endfor %}
+    <a href="/" class="btn">Wróć</a>
+{% endblock %}
